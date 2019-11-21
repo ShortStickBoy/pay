@@ -25,12 +25,20 @@ class WXPay private constructor() : PayMode<WXPayParams> {
         return mWXApi
     }
 
+    fun isWxPaySupport(context: Context, appId: String): Boolean {
+        if (!create) {
+            initWXApi(context, appId)
+        }
+        return mWXApi.isWXAppInstalled && mWXApi.wxAppSupportAPI >= Build.PAY_SUPPORTED_SDK_INT
+    }
+
     override fun pay(activity: Activity, params: WXPayParams, listener: PayListener) {
 
         mListener = listener
 
         if (params.appId.isEmpty() || params.partnerId.isEmpty() || params.prepayId.isEmpty() || params.packageValue.isEmpty() || params.nonceStr.isEmpty() || params.sign.isEmpty()) {
-            WXPayErrors.getText(WXPayErrors.CODE_NULL_PARAM)?.let { listener.onFailure(WXPayErrors.CODE_NULL_PARAM, it) }
+            WXPayErrors.getText(WXPayErrors.CODE_NULL_PARAM)
+                ?.let { listener.onFailure(WXPayErrors.CODE_NULL_PARAM, it) }
             return
         }
 
@@ -39,7 +47,8 @@ class WXPay private constructor() : PayMode<WXPayParams> {
         }
 
         if (!(mWXApi.isWXAppInstalled && mWXApi.wxAppSupportAPI >= Build.PAY_SUPPORTED_SDK_INT)) {
-            WXPayErrors.getText(WXPayErrors.CODE_UN_SUPPORT)?.let { listener.onFailure(WXPayErrors.CODE_UN_SUPPORT, it) }
+            WXPayErrors.getText(WXPayErrors.CODE_UN_SUPPORT)
+                ?.let { listener.onFailure(WXPayErrors.CODE_UN_SUPPORT, it) }
             return
         }
 
