@@ -25,6 +25,8 @@ android {
 
 }
 
+// https://developer.android.com/studio/build/dependencies#dependency_configurations
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
