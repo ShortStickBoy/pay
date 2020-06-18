@@ -35,6 +35,6 @@ dependencies {
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    implementation files('libs/alipaySdk-15.6.5-20190718211148.aar')
+    implementation files('libs/alipaySdk-15.7.6-20200521195109.aar')
     compileOnly project(path: ':master')
 }
