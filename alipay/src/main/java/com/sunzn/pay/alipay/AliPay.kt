@@ -14,7 +14,7 @@ import com.sunzn.pay.master.PayMode
 /**
  * https://opendocs.alipay.com/open/54/104509
  */
-class AliPay : PayMode<AliPayParams, Activity> {
+class AliPay : PayMode<AliPayParams> {
 
     private var mListener: PayListener? = null
 

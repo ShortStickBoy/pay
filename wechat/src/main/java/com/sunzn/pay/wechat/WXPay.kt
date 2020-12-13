@@ -13,7 +13,7 @@ import com.tencent.mm.opensdk.openapi.WXAPIFactory
 /**
  * https://developers.weixin.qq.com/doc/oplatform/Downloads/Android_Resource.html
  */
-class WXPay private constructor() : PayMode<WXPayParams, Activity> {
+class WXPay private constructor() : PayMode<WXPayParams> {
 
     private var create: Boolean = false
 

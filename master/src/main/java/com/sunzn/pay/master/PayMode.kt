@@ -2,8 +2,8 @@ package com.sunzn.pay.master
 
 import android.app.Activity
 
-interface PayMode<T : PayParams, A : Activity> {
+interface PayMode<T : PayParams> {
 
-    fun pay(activity: A, params: T, listener: PayListener)
+    fun pay(activity: Activity, params: T, listener: PayListener)
 
 }
